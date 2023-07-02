@@ -12,38 +12,20 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-//        Arbalester arbalester = new Arbalester("hero1");
-//        Magican magican = new Magican("hero2");
-//        Sniper sniper = new Sniper("hero3");
-//        Monk monk = new Monk("hero4");
-//        Peasant peasant = new Peasant("hero5");
-//        Pikeman pikeman = new Pikeman("hero6");
-//        Bandit bandit = new Bandit("hero7");
-//
-//        System.out.println(arbalester.getName());
-//        System.out.println(magican.getName());
-//        System.out.println(sniper.getName());
-//        System.out.println(monk.getName());
-//        System.out.println(peasant.getName());
-//        System.out.println(pikeman.getName());
-//        System.out.println(bandit.getName());
-//
-//        arbalester.attackEnemy(sniper);
-//        System.out.println(sniper.getInfo());
-//        if (!sniper.isDead()) {
-//            monk.heal(sniper);
-//            System.out.println(sniper.getInfo());
-//        }
-
         ArrayList<BaseHero> team1 = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             team1.add(getRandomHero(i));
         }
-
         ArrayList<BaseHero> team2 = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             team2.add(getRandomHero(i));
         }
+
+        System.out.println("Команда 1:");
+        team1.forEach(hero -> System.out.println(hero.getInfo()));
+
+        System.out.println("\nКоманда 2:");
+        team2.forEach(hero -> System.out.println(hero.getInfo()));
     }
 
     private static BaseHero getRandomHero(int index) {
