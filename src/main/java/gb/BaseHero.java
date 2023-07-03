@@ -2,7 +2,7 @@ package gb;
 
 import java.util.Random;
 
-public abstract class BaseHero {
+public abstract class BaseHero implements StepInfoInterface {
     private static final int DEFAULT_HEALTH = 100;
     protected Random rand = new Random();
     private final String name;
@@ -44,4 +44,13 @@ public abstract class BaseHero {
             this.hp = this.maxHp;
         }
     }
+
+    public void step() {
+    }
+
+    public String getInfo() {
+        return this.name + ", тип: " + this.getType() + ", здоровье: " + this.hp + "/" + this.maxHp;
+    }
+
+    abstract protected String getType();
 }
