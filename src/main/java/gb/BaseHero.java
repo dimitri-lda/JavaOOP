@@ -9,7 +9,6 @@ public abstract class BaseHero implements StepInfoInterface {
     private final String name;
     private final int maxHp;
     private int hp;
-
     private final Coordinates coordinates;
 
     public BaseHero(String name, int hp, int x, int y) {
@@ -31,6 +30,10 @@ public abstract class BaseHero implements StepInfoInterface {
         return this.hp;
     }
 
+    public int getMaxHp() {
+        return this.maxHp;
+    }
+
     public boolean isDead() {
         return this.hp == 0;
     }
@@ -49,7 +52,7 @@ public abstract class BaseHero implements StepInfoInterface {
         }
     }
 
-    public void step() {
+    public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> teamMates) {
     }
 
     public String getInfo() {
@@ -65,7 +68,7 @@ public abstract class BaseHero implements StepInfoInterface {
         return this.coordinates;
     }
 
-    public BaseHero getClosesEnemy(ArrayList<BaseHero> enemies) {
+    public BaseHero getClosestEnemy(ArrayList<BaseHero> enemies) {
         BaseHero closestEnemy = null;
         double closestDistance = 0;
         for (BaseHero enemy : enemies) {
