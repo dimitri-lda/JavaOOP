@@ -24,15 +24,23 @@ public class Main {
         System.out.println("Команда 1:");
         team1.forEach(hero -> {
             System.out.println(hero.getInfo());
-            showClosestEnemy(hero, team2);
-            System.out.println();
+            BaseHero closestEnemy = hero.getClosesEnemy(team2);
+            System.out.printf(
+                    "Ближайший противник: %s, расстояние: %.2f\n\n",
+                    closestEnemy.getName(),
+                    hero.getDistanceToEnemy(closestEnemy)
+            );
         });
 
         System.out.println("\nКоманда 2:");
         team2.forEach(hero -> {
             System.out.println(hero.getInfo());
-            showClosestEnemy(hero, team1);
-            System.out.println();
+            BaseHero closestEnemy = hero.getClosesEnemy(team1);
+            System.out.printf(
+                    "Ближайший противник: %s, расстояние: %.2f\n\n",
+                    closestEnemy.getName(),
+                    hero.getDistanceToEnemy(closestEnemy)
+            );
         });
     }
 
@@ -63,20 +71,5 @@ public class Main {
     private static HeroNames randomHeroName() {
         int pick = new Random().nextInt(HeroNames.values().length);
         return HeroNames.values()[pick];
-    }
-
-    private static void showClosestEnemy(BaseHero hero, ArrayList<BaseHero> enemies) {
-        BaseHero closestEnemy = null;
-        double closestDistance = 0;
-        for (BaseHero enemy : enemies) {
-            double distance = Math.sqrt(Math.pow(hero.getCoordinates().getX() - enemy.getCoordinates().getX(), 2)
-                            + Math.pow(hero.getCoordinates().getY() - enemy.getCoordinates().getY(), 2));
-            if (closestEnemy == null || distance < closestDistance) {
-                closestEnemy = enemy;
-                closestDistance = distance;
-            }
-        }
-        if (closestEnemy != null)
-            System.out.printf("Ближайший противник: %s, расстояние: %.2f\n", closestEnemy.getName(), closestDistance);
     }
 }

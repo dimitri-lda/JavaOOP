@@ -1,5 +1,6 @@
 package gb;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class BaseHero implements StepInfoInterface {
@@ -62,5 +63,24 @@ public abstract class BaseHero implements StepInfoInterface {
 
     public Coordinates getCoordinates() {
         return this.coordinates;
+    }
+
+    public BaseHero getClosesEnemy(ArrayList<BaseHero> enemies) {
+        BaseHero closestEnemy = null;
+        double closestDistance = 0;
+        for (BaseHero enemy : enemies) {
+            double distance = Math.sqrt(Math.pow(this.getCoordinates().getX() - enemy.getCoordinates().getX(), 2)
+                    + Math.pow(this.getCoordinates().getY() - enemy.getCoordinates().getY(), 2));
+            if (closestEnemy == null || distance < closestDistance) {
+                closestEnemy = enemy;
+                closestDistance = distance;
+            }
+        }
+        return closestEnemy;
+    }
+
+    public double getDistanceToEnemy(BaseHero enemy) {
+        return Math.sqrt(Math.pow(this.getCoordinates().getX() - enemy.getCoordinates().getX(), 2)
+                + Math.pow(this.getCoordinates().getY() - enemy.getCoordinates().getY(), 2));
     }
 }
