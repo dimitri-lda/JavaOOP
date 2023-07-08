@@ -9,14 +9,17 @@ public abstract class BaseHero implements StepInfoInterface {
     private final int maxHp;
     private int hp;
 
-    public BaseHero(String name, int hp) {
+    private final Coordinates coordinates;
+
+    public BaseHero(String name, int hp, int x, int y) {
         this.name = name;
         this.hp = hp;
         this.maxHp = hp;
+        this.coordinates = new Coordinates(x, y);
     }
 
-    public BaseHero(String name) {
-        this(name, DEFAULT_HEALTH);
+    public BaseHero(String name, int x, int y) {
+        this(name, DEFAULT_HEALTH, x, y);
     }
 
     public String getName() {
@@ -49,8 +52,15 @@ public abstract class BaseHero implements StepInfoInterface {
     }
 
     public String getInfo() {
-        return this.name + ", тип: " + this.getType() + ", здоровье: " + this.hp + "/" + this.maxHp;
+        return this.name
+                + ", тип: " + this.getType()
+                + ", здоровье: " + this.hp + "/" + this.maxHp
+                + ", координаты: " + this.coordinates.getX() + ", " + this.coordinates.getY();
     }
 
     abstract protected String getType();
+
+    public Coordinates getCoordinates() {
+        return this.coordinates;
+    }
 }

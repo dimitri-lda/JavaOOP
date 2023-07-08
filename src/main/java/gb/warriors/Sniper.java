@@ -5,12 +5,12 @@ import gb.Warrior;
 public class Sniper extends Warrior {
     private String type = "Снайпер";
 
-    public Sniper(String name, int hp) {
-        super("Sniper_" + name, hp);
+    public Sniper(String name, int hp, int x, int y) {
+        super("Sniper_" + name, hp, x, y);
     }
 
-    public Sniper(String name) {
-        super(name);
+    public Sniper(String name, int x, int y) {
+        super(name, x, y);
     }
 
     protected int getDamage() {
