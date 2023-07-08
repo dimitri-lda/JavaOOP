@@ -1,12 +1,12 @@
 package gb;
 
 public abstract class Warrior extends BaseHero {
-    public Warrior(String name, int hp) {
-        super(name, hp);
+    public Warrior(String name, int hp, int x, int y) {
+        super(name, hp, x, y);
     }
 
-    public Warrior(String name) {
-        super(name);
+    public Warrior(String name, int x, int y) {
+        super(name, x, y);
     }
 
     protected abstract int getDamage();

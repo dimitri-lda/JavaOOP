@@ -8,12 +8,12 @@ import gb.Warrior;
 public class Pikeman extends Warrior {
     private String type = "Копейщик";
 
-    public Pikeman(String name, int hp) {
-        super("Pikeman_" + name, hp);
+    public Pikeman(String name, int hp, int x, int y) {
+        super("Pikeman_" + name, hp, x, y);
     }
 
-    public Pikeman(String name) {
-        super(name);
+    public Pikeman(String name, int x, int y) {
+        super(name, x, y);
     }
 
     protected int getDamage() {

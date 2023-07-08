@@ -5,12 +5,12 @@ import gb.Wizzard;
 public class Monk extends Wizzard {
     private String type = "Монах";
 
-    public Monk(String name, int hp) {
-        super("Monk_" + name, hp);
+    public Monk(String name, int hp, int x, int y) {
+        super("Monk_" + name, hp, x, y);
     }
 
-    public Monk(String name) {
-        super(name);
+    public Monk(String name, int x, int y) {
+        super(name, x, y);
     }
 
     protected int getHealAmount() {

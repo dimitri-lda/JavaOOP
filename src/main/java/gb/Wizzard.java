@@ -1,12 +1,12 @@
 package gb;
 
 public abstract class Wizzard extends BaseHero {
-    public Wizzard(String name, int hp) {
-        super(name, hp);
+    public Wizzard(String name, int hp, int x, int y) {
+        super(name, hp, x, y);
     }
 
-    public Wizzard(String name) {
-        super(name);
+    public Wizzard(String name, int x, int y) {
+        super(name, x, y);
     }
 
     protected abstract int getHealAmount();
