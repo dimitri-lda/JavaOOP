@@ -21,12 +21,8 @@ public abstract class BaseArcher extends Warrior {
 
     @Override
     public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> teamMates) {
-        if (this.arrows == 0) {
-            System.out.println(super.getName() + " не может сделать шаг, так как у него закончились стрелы");
-            return;
-        }
-        if (super.isDead()) {
-            System.out.println(super.getName() + " не может сделать шаг, так как он погиб");
+        if (this.arrows == 0 || super.isDead()) {
+            System.out.println(super.getName() + " не может сделать шаг, у него закончились стрелы или он погиб");
             return;
         }
 
