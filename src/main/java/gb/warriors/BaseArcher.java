@@ -33,7 +33,10 @@ public abstract class BaseArcher extends Warrior {
         BaseHero closestEnemy = super.getClosestEnemy(enemies);
         this.attackEnemy(closestEnemy);
 
-        if (!this.hasTeamAliveFarmers(teamMates)) {
+        Farmer farmer = this.getFirstAvailableFarmer(teamMates);
+        if (farmer != null) {
+            farmer.setAvailable(false);
+        } else {
             this.removeArrows();
         }
         System.out.println("У " + this.getName() + " осталось стрел: " + this.arrows + "\n");
@@ -46,12 +49,12 @@ public abstract class BaseArcher extends Warrior {
         }
     }
 
-    private boolean hasTeamAliveFarmers(ArrayList<BaseHero> teamMates) {
+    private Farmer getFirstAvailableFarmer(ArrayList<BaseHero> teamMates) {
         for (BaseHero baseHero : teamMates) {
-            if (baseHero instanceof Farmer && !baseHero.isDead()) {
-                return true;
+            if (baseHero instanceof Farmer && ((Farmer) baseHero).isAliveAndAvailable()) {
+                return (Farmer) baseHero;
             }
         }
-        return false;
+        return null;
     }
 }
