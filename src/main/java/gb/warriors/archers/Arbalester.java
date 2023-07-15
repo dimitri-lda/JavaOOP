@@ -1,8 +1,8 @@
-package gb.warriors;
+package gb.warriors.archers;
 
-import gb.Warrior;
+import gb.warriors.BaseArcher;
 
-public class Arbalester extends Warrior {
+public class Arbalester extends BaseArcher {
     private String type = "Арбалетчик";
 
     public Arbalester(String name, int hp, int x, int y) {

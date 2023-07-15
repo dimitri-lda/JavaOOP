@@ -1,8 +1,8 @@
-package gb.warriors;
+package gb.warriors.archers;
 
-import gb.Warrior;
+import gb.warriors.BaseArcher;
 
-public class Sniper extends Warrior {
+public class Sniper extends BaseArcher {
     private String type = "Снайпер";
 
     public Sniper(String name, int hp, int x, int y) {

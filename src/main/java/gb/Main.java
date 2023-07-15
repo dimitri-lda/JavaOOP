@@ -1,9 +1,9 @@
 package gb;
 
-import gb.warriors.Arbalester;
+import gb.warriors.archers.Arbalester;
 import gb.warriors.Bandit;
 import gb.warriors.Pikeman;
-import gb.warriors.Sniper;
+import gb.warriors.archers.Sniper;
 import gb.wizzards.Magican;
 import gb.wizzards.Monk;
 
@@ -24,7 +24,7 @@ public class Main {
         System.out.println("Команда 1:");
         team1.forEach(hero -> {
             System.out.println(hero.getInfo());
-            BaseHero closestEnemy = hero.getClosesEnemy(team2);
+            BaseHero closestEnemy = hero.getClosestEnemy(team2);
             System.out.printf(
                     "Ближайший противник: %s, расстояние: %.2f\n\n",
                     closestEnemy.getName(),
@@ -35,13 +35,19 @@ public class Main {
         System.out.println("\nКоманда 2:");
         team2.forEach(hero -> {
             System.out.println(hero.getInfo());
-            BaseHero closestEnemy = hero.getClosesEnemy(team1);
+            BaseHero closestEnemy = hero.getClosestEnemy(team1);
             System.out.printf(
                     "Ближайший противник: %s, расстояние: %.2f\n\n",
                     closestEnemy.getName(),
                     hero.getDistanceToEnemy(closestEnemy)
             );
         });
+
+        System.out.println("Ходит Команда 1:");
+        team1.forEach(hero -> hero.step(team2, team1));
+
+        System.out.println("Ходит Команда 2:");
+        team2.forEach(hero -> hero.step(team1, team2));
     }
 
     private static BaseHero getRandomHero(int heroIndex, int teamIndex) {
@@ -51,20 +57,20 @@ public class Main {
         x = teamIndex == 1 ? x : x + 15;  // 15 - смещение по оси X для второй команды
         switch (rand) {
             case 0:
-                return new Arbalester(randomHeroName() + " " + teamIndex + heroIndex, x, y);
+                return new Arbalester(randomHeroName() + "_" + teamIndex + heroIndex, x, y);
             case 1:
-                return new Magican(randomHeroName() + " " + teamIndex + heroIndex, x, y);
+                return new Magican(randomHeroName() + "_" + teamIndex + heroIndex, x, y);
             case 2:
-                return new Sniper(randomHeroName() + " " + teamIndex + heroIndex, x, y);
+                return new Sniper(randomHeroName() + "_" + teamIndex + heroIndex, x, y);
             case 3:
-                return new Monk(randomHeroName() + " " + teamIndex + heroIndex, x, y);
+                return new Monk(randomHeroName() + "_" + teamIndex + heroIndex, x, y);
             case 4:
-                return new Peasant(randomHeroName() + " " + teamIndex + heroIndex, x, y);
+                return new Farmer(randomHeroName() + "_" + teamIndex + heroIndex, x, y);
             case 5:
-                return new Pikeman(randomHeroName() + " " + teamIndex + heroIndex, x, y);
+                return new Pikeman(randomHeroName() + "_" + teamIndex + heroIndex, x, y);
             case 6:
             default:
-                return new Bandit(randomHeroName() + " " + teamIndex + heroIndex, x, y);
+                return new Bandit(randomHeroName() + "_" + teamIndex + heroIndex, x, y);
         }
     }
 
