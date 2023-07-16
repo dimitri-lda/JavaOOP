@@ -21,22 +21,21 @@ public abstract class BaseArcher extends Warrior {
 
     @Override
     public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> teamMates) {
-        if (this.arrows == 0) {
-            System.out.println(super.getName() + " не может сделать шаг, так как у него закончились стрелы");
-            return;
-        }
-        if (super.isDead()) {
-            System.out.println(super.getName() + " не может сделать шаг, так как он погиб");
+        if (this.arrows == 0 || super.isDead()) {
+//            System.out.println(super.getName() + " не может сделать шаг, у него закончились стрелы или он погиб");
             return;
         }
 
         BaseHero closestEnemy = super.getClosestEnemy(enemies);
         this.attackEnemy(closestEnemy);
 
-        if (!this.hasTeamAliveFarmers(teamMates)) {
+        Farmer farmer = this.getFirstAvailableFarmer(teamMates);
+        if (farmer != null) {
+            farmer.setAvailable(false);
+        } else {
             this.removeArrows();
         }
-        System.out.println("У " + this.getName() + " осталось стрел: " + this.arrows + "\n");
+//        System.out.println("У " + this.getName() + " осталось стрел: " + this.arrows + "\n");
     }
 
     private void removeArrows() {
@@ -46,12 +45,12 @@ public abstract class BaseArcher extends Warrior {
         }
     }
 
-    private boolean hasTeamAliveFarmers(ArrayList<BaseHero> teamMates) {
+    private Farmer getFirstAvailableFarmer(ArrayList<BaseHero> teamMates) {
         for (BaseHero baseHero : teamMates) {
-            if (baseHero instanceof Farmer && !baseHero.isDead()) {
-                return true;
+            if (baseHero instanceof Farmer && ((Farmer) baseHero).isAliveAndAvailable()) {
+                return (Farmer) baseHero;
             }
         }
-        return false;
+        return null;
     }
 }

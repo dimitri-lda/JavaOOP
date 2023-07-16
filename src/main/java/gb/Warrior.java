@@ -13,6 +13,6 @@ public abstract class Warrior extends BaseHero {
     public void attackEnemy(BaseHero enemy) {
         enemy.takeDamage(this.getDamage());
         System.out.println(super.getName() + " атакует " + enemy.getName());
-        System.out.println("У " + enemy.getName() + " осталось здоровья: " + enemy.getHp() + "/" + enemy.getMaxHp());
+//        System.out.println("У " + enemy.getName() + " осталось здоровья: " + enemy.getHp() + "/" + enemy.getMaxHp());
     }
 }
