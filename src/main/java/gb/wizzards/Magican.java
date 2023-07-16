@@ -14,7 +14,7 @@ public class Magican extends Wizzard {
     }
 
     protected int getHealAmount() {
-        return super.rand.nextInt(10, 20);
+        return super.rand.nextInt(5, 7);
     }
 
     protected String getType() {

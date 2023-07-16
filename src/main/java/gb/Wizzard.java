@@ -11,11 +11,23 @@ public abstract class Wizzard extends BaseHero {
         super(name, x, y);
     }
 
+    protected int healLimit = 100;
+
     protected abstract int getHealAmount();
 
     public void heal(BaseHero hero) {
+        if (this.healLimit == 0) {
+            return;
+        }
+
+        int healAmount = this.getHealAmount();
+        hero.takeHeal(healAmount);
         System.out.println(super.getName() + " лечит " + hero.getName());
-        hero.takeHeal(this.getHealAmount());
+
+        this.healLimit -= healAmount;
+        if (this.healLimit < 0) {
+            this.healLimit = 0;
+        }
     }
 
     @Override
@@ -35,5 +47,10 @@ public abstract class Wizzard extends BaseHero {
         if (weakestTeammate != null) {
             this.heal(weakestTeammate);
         }
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo();
     }
 }

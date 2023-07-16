@@ -56,10 +56,9 @@ public abstract class BaseHero implements StepInfoInterface {
     }
 
     public String getInfo() {
-        return this.name
-                + ", тип: " + this.getType()
-                + ", здоровье: " + this.hp + "/" + this.maxHp
-                + ", координаты: " + this.coordinates.getX() + ", " + this.coordinates.getY();
+        return this.name + ' ' + this.getType()
+                + ", \u2661 " + this.hp + "/" + this.maxHp
+                + ", [" + this.coordinates.getX() + "," + this.coordinates.getY() + "]";
     }
 
     abstract protected String getType();
@@ -85,5 +84,10 @@ public abstract class BaseHero implements StepInfoInterface {
     public double getDistanceToEnemy(BaseHero enemy) {
         return Math.sqrt(Math.pow(this.getCoordinates().getX() - enemy.getCoordinates().getX(), 2)
                 + Math.pow(this.getCoordinates().getY() - enemy.getCoordinates().getY(), 2));
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

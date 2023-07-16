@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Крестьянин
  */
 public class Farmer extends BaseHero {
-    private String type = "Farmer";
+    private String type = "Крестьянин";
     private boolean available = true;
 
     public Farmer(String name, int hp, int x, int y) {

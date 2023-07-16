@@ -22,7 +22,7 @@ public abstract class BaseArcher extends Warrior {
     @Override
     public void step(ArrayList<BaseHero> enemies, ArrayList<BaseHero> teamMates) {
         if (this.arrows == 0 || super.isDead()) {
-            System.out.println(super.getName() + " не может сделать шаг, у него закончились стрелы или он погиб");
+//            System.out.println(super.getName() + " не может сделать шаг, у него закончились стрелы или он погиб");
             return;
         }
 
@@ -35,7 +35,7 @@ public abstract class BaseArcher extends Warrior {
         } else {
             this.removeArrows();
         }
-        System.out.println("У " + this.getName() + " осталось стрел: " + this.arrows + "\n");
+//        System.out.println("У " + this.getName() + " осталось стрел: " + this.arrows + "\n");
     }
 
     private void removeArrows() {

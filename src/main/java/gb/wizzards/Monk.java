@@ -14,7 +14,7 @@ public class Monk extends Wizzard {
     }
 
     protected int getHealAmount() {
-        return super.rand.nextInt(15, 25);
+        return super.rand.nextInt(3, 5);
     }
 
     protected String getType() {
