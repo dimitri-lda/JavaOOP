@@ -3,11 +3,7 @@ package gb.warriors.archers;
 import gb.warriors.BaseArcher;
 
 public class Sniper extends BaseArcher {
-    private String type = "Снайпер";
-
-    public Sniper(String name, int hp, int x, int y) {
-        super("Sniper_" + name, hp, x, y);
-    }
+    private final String type = "Снайпер";
 
     public Sniper(String name, int x, int y) {
         super(name, x, y);

@@ -1,16 +1,12 @@
-package gb.warriors;
+package gb.warriors.infantry;
 
-import gb.Warrior;
+import gb.warriors.BaseInfantry;
 
 /**
  * Копейщик
  */
-public class Pikeman extends Warrior {
-    private String type = "Копейщик";
-
-    public Pikeman(String name, int hp, int x, int y) {
-        super("Pikeman_" + name, hp, x, y);
-    }
+public class Pikeman extends BaseInfantry {
+    private final String type = "Копейщик";
 
     public Pikeman(String name, int x, int y) {
         super(name, x, y);

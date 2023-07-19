@@ -25,8 +25,8 @@ public class View {
     }
     private static String getChar(int x, int y){
         String out = "| ";
-        for (BaseHero human: Main.allTeam) {
-            if (human.getCoordinates().getY() == x && human.getCoordinates().getX() == y){
+        for (BaseHero human: Main.allTeams) {
+            if (human.getCoordinates().getY() == y && human.getCoordinates().getX() == x){
                 if (human.getHp() == 0) {
                     out = "|" + (AnsiColors.ANSI_RED + human.toString().charAt(0) + AnsiColors.ANSI_RESET);
                     break;
@@ -45,12 +45,11 @@ public class View {
             System.out.print(AnsiColors.ANSI_YELLOW+ "Step " + step + AnsiColors.ANSI_RESET);
         }
         step++;
-        Main.allTeam.forEach((v) -> l[0] = Math.max(l[0], v.getInfo().length()));
+        Main.allTeams.forEach((v) -> l[0] = Math.max(l[0], v.getInfo().length()));
         System.out.print("_".repeat(l[0]*2));
         System.out.println("");
         System.out.print(top10 + "    ");
         System.out.print(AnsiColors.ANSI_GREEN+":\tGreen side"+AnsiColors.ANSI_RESET);
-        //for (int i = 0; i < l[0]-9; i++)
         System.out.print(" ".repeat(l[0]-9));
         System.out.println(AnsiColors.ANSI_BLUE+"Blue side"+AnsiColors.ANSI_RESET);
         for (int i = 1; i < 11; i++) {

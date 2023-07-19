@@ -3,11 +3,7 @@ package gb.wizzards;
 import gb.Wizzard;
 
 public class Monk extends Wizzard {
-    private String type = "Монах";
-
-    public Monk(String name, int hp, int x, int y) {
-        super("Monk_" + name, hp, x, y);
-    }
+    private final String type = "Монах";
 
     public Monk(String name, int x, int y) {
         super(name, x, y);
