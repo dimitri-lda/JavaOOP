@@ -8,10 +8,6 @@ import gb.warriors.BaseInfantry;
 public class Pikeman extends BaseInfantry {
     private final String type = "Копейщик";
 
-    public Pikeman(String name, int hp, int x, int y) {
-        super("Pikeman_" + name, hp, x, y);
-    }
-
     public Pikeman(String name, int x, int y) {
         super(name, x, y);
     }

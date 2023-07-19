@@ -3,10 +3,6 @@ package gb;
 import java.util.ArrayList;
 
 public abstract class Wizzard extends BaseHero {
-    public Wizzard(String name, int hp, int x, int y) {
-        super(name, hp, x, y);
-    }
-
     public Wizzard(String name, int x, int y) {
         super(name, x, y);
     }

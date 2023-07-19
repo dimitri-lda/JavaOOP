@@ -9,11 +9,6 @@ import java.util.ArrayList;
 public abstract class BaseArcher extends Warrior {
     private int arrows;
 
-    public BaseArcher(String name, int hp, int x, int y) {
-        super(name, hp, x, y);
-        this.arrows = super.rand.nextInt(5, 10);
-    }
-
     public BaseArcher(String name, int x, int y) {
         super(name, x, y);
         this.arrows = super.rand.nextInt(5, 10);

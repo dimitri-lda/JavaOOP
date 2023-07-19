@@ -7,11 +7,6 @@ import gb.Warrior;
 import java.util.ArrayList;
 
 public abstract class BaseInfantry extends Warrior {
-
-    public BaseInfantry(String name, int hp, int x, int y) {
-        super(name, hp, x, y);
-    }
-
     public BaseInfantry(String name, int x, int y) {
         super(name, x, y);
     }

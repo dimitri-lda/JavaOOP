@@ -8,8 +8,6 @@ import gb.warriors.infantry.Pikeman;
 import gb.warriors.archers.Sniper;
 import gb.wizzards.Magican;
 import gb.wizzards.Monk;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -70,25 +68,16 @@ public class Main {
 
     private static BaseHero getRandomHero(int heroIndex, int teamIndex) {
         int rand = new Random().nextInt(0, 7);
-        int y = heroIndex;
         int x = teamIndex == 1 ? 1 : 10;  // стартовое положение X для команды 1 и 2
-        switch (rand) {
-            case 0:
-                return new Arbalester(randomHeroName() + String.valueOf(heroIndex), x, y);
-            case 1:
-                return new Magican(randomHeroName() + String.valueOf(heroIndex), x, y);
-            case 2:
-                return new Sniper(randomHeroName() + String.valueOf(heroIndex), x, y);
-            case 3:
-                return new Monk(randomHeroName() + String.valueOf(heroIndex), x, y);
-            case 4:
-                return new Farmer(randomHeroName() + String.valueOf(heroIndex), x, y);
-            case 5:
-                return new Pikeman(randomHeroName() + String.valueOf(heroIndex), x, y);
-            case 6:
-            default:
-                return new Bandit(randomHeroName() + String.valueOf(heroIndex), x, y);
-        }
+        return switch (rand) {
+            case 0 -> new Arbalester(randomHeroName() + String.valueOf(heroIndex), x, heroIndex);
+            case 1 -> new Magican(randomHeroName() + String.valueOf(heroIndex), x, heroIndex);
+            case 2 -> new Sniper(randomHeroName() + String.valueOf(heroIndex), x, heroIndex);
+            case 3 -> new Monk(randomHeroName() + String.valueOf(heroIndex), x, heroIndex);
+            case 4 -> new Farmer(randomHeroName() + String.valueOf(heroIndex), x, heroIndex);
+            case 5 -> new Pikeman(randomHeroName() + String.valueOf(heroIndex), x, heroIndex);
+            default -> new Bandit(randomHeroName() + String.valueOf(heroIndex), x, heroIndex);
+        };
     }
 
     private static HeroNames randomHeroName() {

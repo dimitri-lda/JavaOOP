@@ -5,10 +5,6 @@ import gb.warriors.BaseInfantry;
 public class Bandit extends BaseInfantry {
     private final String type = "Разбойник";
 
-    public Bandit(String name, int hp, int x, int y) {
-        super("Bandit_" + name, hp, x, y);
-    }
-
     public Bandit(String name, int x, int y) {
         super(name, x, y);
     }
