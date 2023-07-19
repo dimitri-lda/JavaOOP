@@ -30,10 +30,6 @@ public abstract class BaseHero implements StepInfoInterface {
         return this.hp;
     }
 
-    public int getMaxHp() {
-        return this.maxHp;
-    }
-
     public boolean isDead() {
         return this.hp == 0;
     }
@@ -56,9 +52,8 @@ public abstract class BaseHero implements StepInfoInterface {
     }
 
     public String getInfo() {
-        return this.name + ' ' + this.getType()
-                + ", \u2661 " + this.hp + "/" + this.maxHp
-                + ", [" + this.coordinates.getX() + "," + this.coordinates.getY() + "]";
+        return this.name + ' ' + this.getType() + ", ♡ " + this.hp + ", [" + this.coordinates.getX()
+                + "," + this.coordinates.getY() + "]";
     }
 
     abstract protected String getType();
@@ -71,6 +66,9 @@ public abstract class BaseHero implements StepInfoInterface {
         BaseHero closestEnemy = null;
         double closestDistance = 0;
         for (BaseHero enemy : enemies) {
+            if (enemy.isDead()) {
+                continue;
+            }
             double distance = Math.sqrt(Math.pow(this.getCoordinates().getX() - enemy.getCoordinates().getX(), 2)
                     + Math.pow(this.getCoordinates().getY() - enemy.getCoordinates().getY(), 2));
             if (closestEnemy == null || distance < closestDistance) {
@@ -81,9 +79,9 @@ public abstract class BaseHero implements StepInfoInterface {
         return closestEnemy;
     }
 
-    public double getDistanceToEnemy(BaseHero enemy) {
-        return Math.sqrt(Math.pow(this.getCoordinates().getX() - enemy.getCoordinates().getX(), 2)
-                + Math.pow(this.getCoordinates().getY() - enemy.getCoordinates().getY(), 2));
+    public int getDistanceToEnemy(BaseHero enemy) {
+        return Math.abs(this.getCoordinates().getX() - enemy.getCoordinates().getX())
+                + Math.abs(this.getCoordinates().getY() - enemy.getCoordinates().getY());
     }
 
     @Override

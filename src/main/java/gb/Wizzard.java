@@ -22,7 +22,6 @@ public abstract class Wizzard extends BaseHero {
 
         int healAmount = this.getHealAmount();
         hero.takeHeal(healAmount);
-        System.out.println(super.getName() + " лечит " + hero.getName());
 
         this.healLimit -= healAmount;
         if (this.healLimit < 0) {

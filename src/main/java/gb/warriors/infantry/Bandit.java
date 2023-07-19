@@ -1,9 +1,9 @@
-package gb.warriors;
+package gb.warriors.infantry;
 
-import gb.Warrior;
+import gb.warriors.BaseInfantry;
 
-public class Bandit extends Warrior {
-    private String type = "Разбойник";
+public class Bandit extends BaseInfantry {
+    private final String type = "Разбойник";
 
     public Bandit(String name, int hp, int x, int y) {
         super("Bandit_" + name, hp, x, y);
